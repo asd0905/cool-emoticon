@@ -44,3 +44,16 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+작업 과정
+2023.05.15
+- npx create-react-app cool-emoticon --template typescript
+- 코드 초기화 (필요 없는 기본 스타일, 로직 제거)
+- 폴더 구조 구성
+- styled-components 설치 : npm i styled-components, npm i @types/styled-components
+- --> 이슈 : styled-components 설치 오류, @5.3.10 버전으로 설치
+- react-router-dom 설치 : npm i react-router-dom
+- Router.tsx 파일 생성 / 적용
+- theme.ts 파일 생성 / 적용
