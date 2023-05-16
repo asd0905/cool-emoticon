@@ -57,3 +57,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - react-router-dom 설치 : npm i react-router-dom
 - Router.tsx 파일 생성 / 적용
 - theme.ts 파일 생성 / 적용
+2023.05.16
+- 해더 (메뉴, 로고, 검색)
+- nav
+- framer-motion 적용 (애니메이션 위함)
+- recoil 적용 (상태관리)
