@@ -2,7 +2,7 @@ import {useQuery} from 'react-query';
 import {getEmoticon} from '../../api';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import {IEmoticonData} from '../../app.constant';
+import {EEmoticon, IEmoticonData} from '../../app.constant';
 import {useSetRecoilState} from 'recoil';
 import {emoticonsAtom} from '../../atoms/atom';
 import FMSlider from '../../components/FMSlider/FMSlider';
@@ -73,7 +73,7 @@ export default function Main() {
                     </Link>
                 </h2>
                 {isLoading ? <div>Loading...</div> :
-                    <FMSlider type={'new'} />
+                    <FMSlider type={EEmoticon.NEW} />
                 }
             </article>
             <section className={'styleBannerWrap'}>
@@ -87,7 +87,7 @@ export default function Main() {
                         </Link>
                     </h2>
                     <h3>#귀여운</h3>
-                    <FMSlider type={'style'} />
+                    <FMSlider type={EEmoticon.STYLE} />
                     <h3>#동물</h3>
                     <FMSlider type={'style'} />
                 </article>

@@ -17,3 +17,7 @@ export interface IEmoticonData {
     filePath: string;
 }
 
+export enum EEmoticon {
+    NEW = 'new', STYLE = 'style',
+}
+
