@@ -8,8 +8,9 @@ import {useRecoilValue} from 'recoil';
 
 export default function Router(){
     const isBodyFixed = useRecoilValue(isBodyFixedAtom);
-    return <div style={{position: isBodyFixed ? 'fixed': 'static'}}>
+    return <div style={{position: isBodyFixed ? 'fixed': 'static', overflowX: 'hidden', width: '100%'}}>
         <Header />
+        <div style={{marginTop: 110}}></div>
         <Routes>
             <Route path={'/'} element={<Main />} />
             <Route path={'/new'} element={<New />} />

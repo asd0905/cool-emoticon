@@ -22,13 +22,19 @@ export const SHead = styled.div`
 `;
 
 export const SMenuBtn = styled.div`
-    width: 30px;
-    height: 30px;
     cursor: pointer;
     padding: 15px;
+    display: flex;
+    align-items: center;
+    svg {
+        width: 30px;
+        height: 30px;
+    }
     @media screen and (max-width: 767px) {
-        width: 20px;
-        height: 20px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 `;
 
