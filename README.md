@@ -62,3 +62,11 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - nav
 - framer-motion 적용 (애니메이션 위함)
 - recoil 적용 (상태관리)
+2023.05.17
+- 매인 배너 (테스트용)
+- 최신 이모티콘 배너
+- 스타일 이모티콘 배너
+- react-query 데이터 호출
+- framer-motion : 슬라이더 애니메이션
+- recoil : 이모티콘 데이터 상태 관리
+- 슬라이더 컴포넌트화
