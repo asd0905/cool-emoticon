@@ -48,8 +48,7 @@ export const SSearch = styled.div`
 `;
 
 export const SSearchSvg = styled.svg`
-    width: 30px;
-    height: 30px;
+    width: 25px;
     @media screen and (max-width: 767px) {
         width: 20px;
         height: 20px;
@@ -163,6 +162,9 @@ export const SNavLink = styled(Link)`
     align-items: center;
     color: #000;
     display: flex;
+    @media screen and (max-width: 767px) {
+        width: 20%;
+    }
 `
 
 export const SBar = styled(motion.div)`
@@ -209,6 +211,7 @@ export const SSearchInputBox = styled.div`
     }
     svg {
         padding: 0 20px;
+        width: 60px;
         height: 100%;
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;

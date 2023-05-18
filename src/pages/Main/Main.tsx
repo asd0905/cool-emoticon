@@ -3,8 +3,8 @@ import {getEmoticon} from '../../api';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {EEmoticon, IEmoticonData} from '../../app.constant';
-import {useSetRecoilState} from 'recoil';
-import {emoticonsAtom} from '../../atoms/atom';
+import {useRecoilValue, useSetRecoilState} from 'recoil';
+import {emoticonsAtom, isDraggableAtom} from '../../atoms/atom';
 import FMSlider from '../../components/FMSlider/FMSlider';
 
 const SLayout = styled.div`
@@ -25,10 +25,36 @@ const SLayout = styled.div`
     }
     .newBannerWrap {
         padding: 30px 0 30px 20px;
+        @media screen and (min-width: 1024px) {
+            padding: 30px 20px;
+        }
     }
     .styleBannerWrap {
         background-color: #fafafa;
         padding: 30px 0 30px 20px;
+        @media screen and (min-width: 1024px) {
+            padding: 30px 20px;
+        }
+        article {
+            margin-bottom: 30px;
+        }
+        .web {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            align-items: center;
+            h3 {
+                strong {
+                    display: block;
+                }
+                span {
+                    margin-left: 0;
+                    margin-top: 10px;
+                }
+            }
+            & > div {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 180px));
+            }
+        }
     }
     .bannerTitle {
         font-size: 18px;
@@ -46,9 +72,28 @@ const SLayout = styled.div`
     }
 `;
 
+const STitle3 = styled.h3<{color: string}>`
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    color: ${props => props.color};
+    span {
+        color: #fff;
+        background-color: ${props => props.color};
+        font-size: 13px;
+        display: inline-flex;
+        border-radius: 16px;
+        align-items: center;
+        height: 26px;
+        padding: 0 13px;
+        margin-left: 10px;
+    }
+`
+
 export default function Main() {
     const setEmoticons = useSetRecoilState<IEmoticonData>(emoticonsAtom);
-    const {data, isLoading} = useQuery(['emoticon'], getEmoticon,{
+    const isDraggable = useRecoilValue<boolean>(isDraggableAtom);
+    const { isLoading} = useQuery(['emoticon'], getEmoticon,{
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
             setEmoticons(response.data)
@@ -77,7 +122,6 @@ export default function Main() {
                 }
             </article>
             <section className={'styleBannerWrap'}>
-                <article>
                     <h2 className={'bannerTitle'}>
                         <Link to={'/'}>
                             스타일
@@ -86,10 +130,13 @@ export default function Main() {
                             </svg>
                         </Link>
                     </h2>
-                    <h3>#귀여운</h3>
-                    <FMSlider type={EEmoticon.STYLE} />
-                    <h3>#동물</h3>
-                    <FMSlider type={'style'} />
+                <article className={!isDraggable ? 'web' : ''}>
+                    <STitle3 color={'rgb(244, 196, 0)'}><strong>#귀여운</strong><span>#선생님</span></STitle3>
+                    <FMSlider type={EEmoticon.STYLE} list={[6, 10]} />
+                </article>
+                <article className={!isDraggable ? 'web' : ''}>
+                    <STitle3 color={'rgb(144, 199, 100)'}><strong>#동물</strong><span>#쿨 캐릭터</span></STitle3>
+                    <FMSlider type={EEmoticon.STYLE} list={[2, 6]} />
                 </article>
             </section>
         </SLayout>

@@ -6,7 +6,6 @@ export const SSlider = styled(motion.div)`
     .newBannerBox {
         padding: 10px;
         min-width: 200px;
-        box-sizing: border-box;
         a {
             padding: 20px 30px;
             box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
@@ -22,6 +21,17 @@ export const SSlider = styled(motion.div)`
                 text-align: center;
                 margin-top: 10px;
             }
+        }
+    }
+    .styleBannerBox {
+        //padding: 10px;
+        a {
+            padding: 10px 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
     }
     &.web {
