@@ -70,7 +70,6 @@ export default function FMSlider({type, list}: ISliderType) {
                     )
                 )}
             </SSlider>
-            {/*{constraints}*/}
         </>
     )
 }

@@ -1,5 +1,5 @@
-import {atom} from 'recoil';
-import {IEmoticonData} from '../app.constant';
+import {atom, selectorFamily} from 'recoil';
+import {IEmoticonData, IEmoticonSelector} from '../app.constant';
 
 /** 모달 유무에 따라 body fixed */
 export const isBodyFixedAtom = atom<boolean>({
@@ -14,6 +14,16 @@ export const emoticonsAtom = atom<IEmoticonData>({
         baseUrl: '',
         emoticonList: [],
         filePath: ''
+    }
+})
+
+export const emoticonsSelector = selectorFamily({
+    key: 'emoticonsSelector',
+    get: (params) => ({get}) => {
+        const emoticons = get(emoticonsAtom);
+        const test = emoticons.emoticonList.map(d => {return {name: d.emoticonName, data: d.images}});
+        console.log(test);
+        return test;
     }
 })
 

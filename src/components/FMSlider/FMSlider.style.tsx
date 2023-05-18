@@ -25,6 +25,7 @@ export const SSlider = styled(motion.div)`
     }
     .styleBannerBox {
         //padding: 10px;
+        min-width: 150px;
         a {
             padding: 10px 20px;
             height: 100%;

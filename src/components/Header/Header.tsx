@@ -7,6 +7,7 @@ import {SBar, SHead,
     SInnerSearchBox, SLayout, SLink, SMenu,
     SMenuBtm, SMenuBtn, SMenuTop, SMenuUser, SNav, SNavLink, SOverlay, SSearch, SSearchBox,
     SSearchInputBox, SSearchSvg} from './Header.style';
+import {COOL_EMOTICON_BASE_PATH} from '../../app.constant';
 
 const navVariants = {
     top: {
@@ -21,7 +22,8 @@ export default function Header() {
     const [isMenu, setIsMenu] = useState(false);
     const [isSearch, setIsSearch] = useState(false);
     const homeMatch = useMatch('/');
-    const newMatch = useMatch('/new');
+    const homeMatch2 = useMatch(`${COOL_EMOTICON_BASE_PATH}`);
+    const newMatch = useMatch(`${COOL_EMOTICON_BASE_PATH}/new`);
     const {scrollY} = useScroll();
     const navAnimation = useAnimation();
     const setIsBodyFix = useSetRecoilState(isBodyFixedAtom);
@@ -63,8 +65,8 @@ export default function Header() {
                     </SSearch>}
                 </SHead>
                 <SNav variants={navVariants} animate={navAnimation} initial={'top'} transition={{duration: .2}}>
-                    <SNavLink to={'/'}>홈 {homeMatch && <SBar layoutId={'navBar'} />}</SNavLink>
-                    <SNavLink to={'/new'}>신규 {newMatch && <SBar layoutId={'navBar'} />}</SNavLink>
+                    <SNavLink to={`/${COOL_EMOTICON_BASE_PATH}`}>홈 {(homeMatch || homeMatch2) && <SBar layoutId={'navBar'} />}</SNavLink>
+                    <SNavLink to={`/${COOL_EMOTICON_BASE_PATH}/new`}>신규 {newMatch && <SBar layoutId={'navBar'} />}</SNavLink>
                 </SNav>
             </SLayout>
             <AnimatePresence>

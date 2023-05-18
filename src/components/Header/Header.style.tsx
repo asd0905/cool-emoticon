@@ -181,6 +181,7 @@ export const SSearchBox = styled(motion.div)`
     top: 110px;
     left: 0;
     width: 100%;
+    z-index: 1;
     @media screen and (max-width: 767px) {
         top: 0;
         z-index: 8;
