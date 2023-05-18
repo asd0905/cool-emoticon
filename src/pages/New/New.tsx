@@ -60,6 +60,19 @@ const SLayout = styled.div`
 						&:not(:nth-child(2)) {
 							display: flex;
 						}
+						&.hide {
+							display: none;
+						}
+					}
+				}
+				&:hover {
+					.emoticonUl {
+						.emoticon {
+							display: none;
+							&.hide {
+								display: flex;
+							}
+						}
 					}
 				}
 			}
@@ -100,6 +113,16 @@ export default function New() {
 											.slice(0, 4)
 											.map((d: IEmoticonSelectorData) => (
 												<li key={d.image} className={"emoticon"}>
+													<img
+														src={`${STICKER_BASE_URL}/${emoticon.name}/image_pack/${d.image}`}
+														alt='img'
+													/>
+												</li>
+											))}
+										{emoticon.data
+											.slice(4, 8)
+											.map((d: IEmoticonSelectorData) => (
+												<li key={d.image} className={"emoticon hide"}>
 													<img
 														src={`${STICKER_BASE_URL}/${emoticon.name}/image_pack/${d.image}`}
 														alt='img'
