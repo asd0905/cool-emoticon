@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 
 export const SSlider = styled(motion.div)`
@@ -39,5 +39,45 @@ export const SSlider = styled(motion.div)`
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 		grid-template-rows: repeat(auto-fit, minmax(190px, 1fr));
+	}
+`;
+
+export const rotate = keyframes`
+	0% {
+		transform: rotate(0deg);
+	}
+	30%{
+		transform: rotate(3deg);
+	}
+	50%{
+		transform: rotate(0deg);
+	}
+	70% {
+		transform: rotate(-3deg);
+	}
+	/* 100% {
+		transform: rotate(0);
+	} */
+`;
+
+export const SAniBanner = styled.div`
+	a {
+		transition: box-shadow 0.2s;
+	}
+	&:not(.styleBannerBox):hover {
+		a {
+			box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.3);
+			img {
+				animation: ${rotate} 0.4s infinite ease-in;
+			}
+			p {
+				text-decoration: underline;
+			}
+		}
+	}
+	&.styleBannerBox:hover {
+		img {
+			animation: ${rotate} 0.4s infinite ease-in;
+		}
 	}
 `;

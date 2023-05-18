@@ -1,57 +1,16 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useMotionValue } from "framer-motion";
-import { EEmoticon, IEmoticon } from "../../app.constant";
+import { COOL_EMOTICON_BASE_PATH, IEmoticon } from "../../app.constant";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { emoticonsAtom, isDraggableAtom } from "../../atoms/atom";
-import { SSlider } from "./FMSlider.style";
+import { SAniBanner, SSlider } from "./FMSlider.style";
 import React from "react";
-import styled, { keyframes } from "styled-components";
 
 interface ISliderType {
 	type: string;
 	list?: number[];
 }
-
-const rotate = keyframes`
-	0% {
-		transform: rotate(0deg);
-	}
-	30%{
-		transform: rotate(8deg);
-	}
-	50%{
-		transform: rotate(0deg);
-	}
-	70% {
-		transform: rotate(-8deg);
-	}
-	/* 100% {
-		transform: rotate(0);
-	} */
-`;
-
-const SAniBanner = styled.div`
-	a {
-		transition: box-shadow 0.2s;
-	}
-	&:not(.styleBannerBox):hover {
-		a {
-			box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.3);
-			img {
-				animation: ${rotate} 0.4s infinite ease-in;
-			}
-			p {
-				text-decoration: underline;
-			}
-		}
-	}
-	&.styleBannerBox:hover {
-		img {
-			animation: ${rotate} 0.4s infinite ease-in;
-		}
-	}
-`;
 
 export default function FMSlider({ type, list }: ISliderType) {
 	const slideRef = useRef<HTMLDivElement>(null);
@@ -99,7 +58,9 @@ export default function FMSlider({ type, list }: ISliderType) {
 							.slice(list[0], list[1])
 							.map((e: IEmoticon) => (
 								<SAniBanner className={"styleBannerBox"} key={e.emoticonName}>
-									<Link to={"/"}>
+									<Link
+										to={`/${COOL_EMOTICON_BASE_PATH}/detail/${e.emoticonName}`}
+									>
 										<img
 											src={`${emoticons?.baseUrl}${e.emoticonName}/image_pack/${e.images[0].image}`}
 											alt='img'
@@ -112,7 +73,9 @@ export default function FMSlider({ type, list }: ISliderType) {
 								className={`newBannerBox ${type}`}
 								key={e.emoticonName}
 							>
-								<Link to={"/"}>
+								<Link
+									to={`/${COOL_EMOTICON_BASE_PATH}/detail/${e.emoticonName}`}
+								>
 									<img
 										src={`${emoticons?.baseUrl}${e.emoticonName}/image_pack/${e.images[0].image}`}
 										alt='img'
