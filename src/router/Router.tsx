@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes, useMatch} from 'react-router-dom';
 import React from "react";
 import Main from "../pages/Main/Main";
 import Header from "../components/Header/Header";
@@ -10,6 +10,7 @@ import Detail from "../pages/Detail/Detail";
 
 export default function Router() {
 	const isBodyFixed = useRecoilValue(isBodyFixedAtom);
+	const detailMatch = useMatch(`${COOL_EMOTICON_BASE_PATH}/detail/:id`);
 	return (
 		<div
 			style={{
@@ -19,7 +20,7 @@ export default function Router() {
 			}}
 		>
 			<Header />
-			<div style={{ marginTop: 110 }}></div>
+			<div style={{ marginTop: detailMatch ? 60 : 110 }}></div>
 			<Routes>
 				<Route path={`/`} element={<Main />} />
 				<Route path={`/${COOL_EMOTICON_BASE_PATH}`} element={<Main />} />

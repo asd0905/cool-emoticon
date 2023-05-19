@@ -10,7 +10,7 @@ export const SLayout = styled.div`
 		}
 	}
 	.styleBannerWrapDiv {
-		background-color: #fafafa;
+		background-color: ${props => props.theme.white.darker};
 		.styleBannerWrap {
 			max-width: 1024px;
 			padding: 30px 0 30px 20px;
@@ -47,7 +47,7 @@ export const SLayout = styled.div`
 		a {
 			display: inline-flex;
 			align-items: center;
-			color: #000;
+			color:  ${props => props.theme.black.deepDark};
 			svg {
 				width: 15px;
 				margin-left: 10px;

@@ -16,35 +16,62 @@ export const SHead = styled.div`
 	height: 60px;
 	align-items: center;
 	padding: 0 10px;
-	background-color: #fff;
+	background-color: ${props => props.theme.white.lighter};
 	position: relative;
 	z-index: 1;
-`;
+    .headLeftMenu {
+        display: flex;
+        height: 100%;
+        .leftMenu {
+            height: 100%;
+            cursor: pointer;
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+            @media screen and (min-width: 767px) {
+                padding: 15px 20px;
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+    }
 
-export const SMenuBtn = styled.div`
-	cursor: pointer;
-	padding: 15px;
-	display: flex;
-	align-items: center;
-	svg {
-		width: 30px;
-		height: 30px;
-	}
-	@media screen and (max-width: 767px) {
-		svg {
-			width: 20px;
-			height: 20px;
-		}
-	}
+    .logo {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: ${props => props.theme.black.deepDark};
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        &:hover,
+        &:focus {
+            color: #000;
+        }
+        @media screen and (max-width: 767px) {
+            font-size: 17px;
+        }
+    }
 `;
 
 export const SSearch = styled.div`
 	cursor: pointer;
-	padding: 0 20px;
+	padding: 0 10px;
 	height: 100%;
 	vertical-align: middle;
 	display: inline-flex;
 	align-items: center;
+    @media screen and (min-width: 767px) {
+        padding: 0 20px;
+    }
 `;
 
 export const SSearchSvg = styled.svg`
@@ -52,25 +79,6 @@ export const SSearchSvg = styled.svg`
 	@media screen and (max-width: 767px) {
 		width: 20px;
 		height: 20px;
-	}
-`;
-
-export const SLink = styled(Link)`
-	height: 100%;
-	display: flex;
-	align-items: center;
-	font-size: 20px;
-	font-weight: bold;
-	color: #000000;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	&:hover,
-	&:focus {
-		color: #000;
-	}
-	@media screen and (max-width: 767px) {
-		font-size: 17px;
 	}
 `;
 
@@ -85,7 +93,7 @@ export const SOverlay = styled(motion.div)`
 `;
 
 export const SMenu = styled(motion.div)`
-	background-color: #ffffff;
+	background-color: ${props => props.theme.white.lighter};
 	width: 80vw;
 	max-width: 400px;
 	height: 100vh;
@@ -152,7 +160,7 @@ export const SNav = styled(motion.nav)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #ffffff;
+	background-color: ${props => props.theme.white.lighter};
 `;
 
 export const SNavLink = styled(Link)`
@@ -161,7 +169,7 @@ export const SNavLink = styled(Link)`
 	width: 10%;
 	justify-content: center;
 	align-items: center;
-	color: #000;
+	color: ${props => props.theme.black.deepDark};
 	display: flex;
 	@media screen and (max-width: 767px) {
 		width: 20%;
@@ -171,15 +179,15 @@ export const SNavLink = styled(Link)`
 export const SBar = styled(motion.div)`
 	width: 100%;
 	height: 1px;
-	background-color: #000;
+	background-color: ${props => props.theme.black.deepDark};
 	position: absolute;
 	left: 0;
 	bottom: 0;
 `;
 
-export const SSearchBox = styled(motion.div)`
+export const SSearchBox = styled(motion.div)<{detailmatch: any}>`
 	position: fixed;
-	top: 110px;
+	top: ${props => props.detailmatch ? '50px' : '110px'};
 	left: 0;
 	width: 100%;
 	z-index: 1;
@@ -190,36 +198,35 @@ export const SSearchBox = styled(motion.div)`
 `;
 
 export const SInnerSearchBox = styled.div`
-	background-color: #fafafa;
+	background-color: ${props => props.theme.white.darker};
 	padding: 30px 0;
 	z-index: 9;
 	position: relative;
-`;
-
-export const SSearchInputBox = styled.div`
-	height: 54px;
-	width: 80vw;
-	background-color: #ffffff;
-	position: relative;
-	display: flex;
-	margin: 0 auto;
-	border-radius: 10px;
-	max-width: 767px;
-	@media screen and (min-width: 767px) {
-		width: 50vw;
-	}
-	input {
-		width: 100%;
-		padding: 20px;
-		border: 0;
-		border-bottom-left-radius: 10px;
-		border-top-left-radius: 10px;
-	}
-	svg {
-		padding: 0 20px;
-		width: 60px;
-		height: 100%;
-		border-bottom-right-radius: 10px;
-		border-top-right-radius: 10px;
-	}
+    .searchInputBox {
+        height: 54px;
+        width: 80vw;
+        background-color: ${props => props.theme.white.lighter};
+        position: relative;
+        display: flex;
+        margin: 0 auto;
+        border-radius: 10px;
+        max-width: 767px;
+        @media screen and (min-width: 767px) {
+            width: 50vw;
+        }
+        input {
+            width: 100%;
+            padding: 20px;
+            border: 0;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+        svg {
+            padding: 0 20px;
+            width: 60px;
+            height: 100%;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    }
 `;

@@ -1,16 +1,18 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { emoticonsAtom, emoticonsSelector } from "../../atoms/atom";
 import {
+	COOL_EMOTICON_BASE_PATH,
 	EQueryKey,
 	IEmoticonSelector,
 	IEmoticonSelectorData,
 	STICKER_BASE_URL,
-} from "../../app.constant";
+} from '../../app.constant';
 import MainBanner from "../../components/MainBanner/MainBanner";
 import styled from "styled-components";
 import { useQuery } from "react-query";
 import { getEmoticon } from "../../api";
 import React from "react";
+import {useNavigate} from 'react-router-dom';
 
 const SLayout = styled.div`
 	.emoticonListSect {
@@ -53,7 +55,6 @@ const SLayout = styled.div`
 					.emoticon {
 						padding: 40px 30px;
 						max-width: 160px;
-						max-width: 160px;
 						display: flex;
 						justify-content: center;
 						align-items: center;
@@ -83,12 +84,16 @@ const SLayout = styled.div`
 export default function New() {
 	const emoticons = useRecoilValue<IEmoticonSelector[]>(emoticonsSelector(1));
 	const setEmoticons = useSetRecoilState(emoticonsAtom);
+	const navigation = useNavigate();
 	const { isLoading } = useQuery([EQueryKey.EMOTICONS], getEmoticon, {
 		// refetchOnWindowFocus: false,
 		onSuccess: (response) => {
 			setEmoticons(response.data);
 		},
 	});
+	const handleClickEmoticon = (emoticonName: string) => {
+		navigation(`/${COOL_EMOTICON_BASE_PATH}/detail/${emoticonName}`)
+	}
 	return (
 		<>
 			<SLayout>
@@ -106,7 +111,10 @@ export default function New() {
 					<>
 						<section className={"emoticonListSect"}>
 							{emoticons.map((emoticon: any) => (
-								<article key={emoticon.name} className={"emoticonList"}>
+								<article key={emoticon.name}
+										 className={"emoticonList"}
+										 onClick={() => handleClickEmoticon(emoticon.name)}
+								>
 									<h3>이모티콘 : {emoticon.name}</h3>
 									<ul className={"emoticonUl"}>
 										{emoticon.data

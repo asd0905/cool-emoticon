@@ -9,20 +9,20 @@ export const theme: DefaultTheme = {
     },
     white: {
         lighter: "#fff",
-        darker: "#e5e5e5",
+        darker: "#fafafa",
     },
 }
 
 export const themeDark: DefaultTheme = {
     red: "#E51013",
     black: {
-        deepDark: "#141414",
-        darker: "#181818",
-        lighter: "#2F2F2F",
+        deepDark: "#3a4b53",
+        darker: "#57707d",
+        lighter: "#7d97a5s",
     },
     white: {
-        lighter: "#fff",
-        darker: "#e5e5e5",
+        lighter: "#c5c5c5",
+        darker: "#b1b1b1",
     },
 }
 

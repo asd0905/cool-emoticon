@@ -20,7 +20,7 @@ const SBanner = styled.div`
 	}
 	&.newMainBanner {
 		padding: 0 30px;
-		background-color: #ff8600;
+		background-color: ${props => props.theme.white.darker};
 		background-image: url(//update.coolmessenger.com/_ImageServer/jirancomms/img/culture_bg.png);
 		video {
 			width: 100%;

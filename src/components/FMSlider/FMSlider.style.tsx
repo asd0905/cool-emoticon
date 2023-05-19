@@ -5,19 +5,21 @@ export const SSlider = styled(motion.div)`
 	display: flex;
 	.newBannerBox {
 		padding: 10px;
-		min-width: 200px;
+		min-width: 170px;
 		a {
 			padding: 20px 30px;
 			box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 			border-radius: 10px;
-			//height: calc(100% - 40px);
 			height: 100%;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+            img {
+                max-width: 100%;
+            }
 			p {
-				color: #000;
+				color: ${props => props.theme.black.deepDark};
 				text-align: center;
 				margin-top: 15px;
 			}
@@ -25,14 +27,17 @@ export const SSlider = styled(motion.div)`
 	}
 	.styleBannerBox {
 		//padding: 10px;
-		min-width: 150px;
+		min-width: 130px;
 		a {
-			padding: 10px 20px;
+			padding: 10px;
 			height: 100%;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+            img {
+                max-width: 100%;
+            }
 		}
 	}
 	&.web {

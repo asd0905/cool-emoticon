@@ -48,3 +48,9 @@ export const isDraggableAtom = atom<boolean>({
 	key: "isDraggable",
 	default: true,
 });
+
+/** dark 테마 여부 */
+export const isDarkThemeAtom = atom<boolean>({
+	key: 'isDark',
+	default: false,
+})
