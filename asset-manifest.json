@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/cool-emoticon/static/js/main.db4b83ee.js",
+    "main.js": "/cool-emoticon/static/js/main.a0b0d718.js",
     "static/js/787.8d08a027.chunk.js": "/cool-emoticon/static/js/787.8d08a027.chunk.js",
     "index.html": "/cool-emoticon/index.html",
-    "main.db4b83ee.js.map": "/cool-emoticon/static/js/main.db4b83ee.js.map",
+    "main.a0b0d718.js.map": "/cool-emoticon/static/js/main.a0b0d718.js.map",
     "787.8d08a027.chunk.js.map": "/cool-emoticon/static/js/787.8d08a027.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.db4b83ee.js"
+    "static/js/main.a0b0d718.js"
   ]
 }
