@@ -22,6 +22,7 @@ export const SHead = styled.div`
     .headLeftMenu {
         display: flex;
         height: 100%;
+        align-items: center;
         .leftMenu {
             height: 100%;
             cursor: pointer;
@@ -112,7 +113,7 @@ export const SMenuTop = styled.div`
 		margin-top: 9px;
 		padding-top: 13px;
 		li {
-			a {
+			a, span {
 				display: flex;
 				height: 50px;
 				align-items: center;
@@ -135,11 +136,16 @@ export const SMenuUser = styled.div`
 	padding: 20px;
 	display: flex;
 	span {
-		background-color: lightskyblue;
+		background-color: white;
 		width: 75px;
 		height: 75px;
 		border-radius: 20px;
 		display: block;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
 	}
 	div {
 		margin-left: 15px;
@@ -228,5 +234,10 @@ export const SInnerSearchBox = styled.div`
             border-bottom-right-radius: 10px;
             border-top-right-radius: 10px;
         }
+    }
+    .error {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 10px;
     }
 `;

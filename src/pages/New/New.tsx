@@ -13,6 +13,7 @@ import { useQuery } from "react-query";
 import { getEmoticon } from "../../api";
 import React from "react";
 import {useNavigate} from 'react-router-dom';
+import {useParams} from 'react-router';
 
 const SLayout = styled.div`
 	.emoticonListSect {

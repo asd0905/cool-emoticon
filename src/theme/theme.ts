@@ -45,4 +45,8 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         box-sizing: border-box;
     }
+    
+    body {
+        background-color: ${props => props.theme.white.lighter};
+    }
 `

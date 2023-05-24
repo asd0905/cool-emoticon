@@ -1,12 +1,13 @@
 import React from 'react';
 import { useParams } from "react-router";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
 import {
+	emoticonDetailAtom,
 	emoticonDetailSelector,
 	emoticonsAtom,
 } from '../../atoms/atom';
-import { EQueryKey, IEmoticonData, STICKER_BASE_URL } from "../../app.constant";
-import { getEmoticon } from "../../api";
+import {EQueryKey, IEmoticonData, IEmoticonDetail, STICKER_BASE_URL} from '../../app.constant';
+import {getEmoticon, getEmoticonDetail} from '../../api';
 import { useQuery } from "react-query";
 import styled from 'styled-components';
 
@@ -47,15 +48,17 @@ const SLayout = styled.div`
 
 export default function Detail() {
 	const { emoticonName } = useParams();
-	const emoticon = useRecoilValue(emoticonDetailSelector(emoticonName));
-	const setEmoticons = useSetRecoilState<IEmoticonData>(emoticonsAtom);
-	const { isLoading } = useQuery([EQueryKey.EMOTICONS], getEmoticon, {
+	const [emoticon, setEmotion] = useRecoilState<IEmoticonDetail>(emoticonDetailAtom);
+	const { isLoading, data } = useQuery([EQueryKey.EMOTICONS, emoticonName],
+		() => getEmoticonDetail(emoticonName || ''),
+		{
 		// refetchOnWindowFocus: false,
 		onSuccess: (response) => {
-			setEmoticons(response.data);
+			// console.log(response);
+			console.log(response.data);
+			setEmotion(response.data);
 		},
 	});
-	window.scrollTo(0, 0);
 	return (
 		<>
 			{isLoading ? <div>Loading...</div> : (
@@ -63,16 +66,16 @@ export default function Detail() {
 					<section className={'emoticonInfo'}>
 						<div className={'emoticonImg'}>
 							<img
-								src={`${STICKER_BASE_URL}/${emoticonName}/image_pack/${emoticon?.images[0].image}`}
+								src={`${STICKER_BASE_URL}/${emoticonName}/image_pack/${emoticon?.emoticon?.images[0].image}`}
 								alt='img'
 							/>
 						</div>
 						<div className={'emoticonTxt'}>
-							<p>{emoticon?.emoticonName}</p>
+							<p>{data?.emoticon?.emoticonName}</p>
 						</div>
 					</section>
 					<ul className={'emoticonList'}>
-						{emoticon?.images.map((d) => (
+						{emoticon?.emoticon?.images.map((d) => (
 							<li className={'emoticon'} key={`${d.image}/${d.id}`}>
 								<img
 									src={`${STICKER_BASE_URL}/${emoticonName}/image_pack/${d.image}`}

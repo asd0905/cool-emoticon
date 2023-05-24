@@ -1,5 +1,5 @@
 import { atom, selectorFamily } from "recoil";
-import { IEmoticonData, IEmoticonSelector } from "../app.constant";
+import {IEmoticon, IEmoticonData, IEmoticonDetail, IEmoticonImage, IEmoticonSelector} from '../app.constant';
 
 /** 모달 유무에 따라 body fixed */
 export const isBodyFixedAtom = atom<boolean>({
@@ -54,3 +54,35 @@ export const isDarkThemeAtom = atom<boolean>({
 	key: 'isDark',
 	default: false,
 })
+
+export const emoticonDetailAtom = atom<IEmoticonDetail>({
+	key: 'emoticon',
+	default: {
+		baseUrl: '',
+		emoticon: {
+			emoticonName: '',
+			fileName: '',
+			imageTabOff: '',
+			imageTabOn: '',
+			images: [],
+		}
+	}
+})
+
+/** 토큰 */
+export const tokenAtom = atom({
+	key: 'token',
+	default: '',
+})
+
+/** 토큰 */
+export const refreshTokenAtom = atom({
+	key: 'refreshToken',
+	default: '',
+})
+
+export const userAtom = atom<any>({
+	key: 'user',
+	default: {}
+})
+

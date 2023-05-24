@@ -3,7 +3,7 @@ import { getEmoticon } from "../../api";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { EEmoticon, EQueryKey, IEmoticonData } from "../../app.constant";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {useRecoilCallback, useRecoilValue, useSetRecoilState} from 'recoil';
 import { emoticonsAtom, isDraggableAtom } from "../../atoms/atom";
 import FMSlider from "../../components/FMSlider/FMSlider";
 import { SLayout, STitle3 } from "./Main.style";
@@ -17,6 +17,7 @@ export default function Main() {
 		// refetchOnWindowFocus: false,
 		onSuccess: (response) => {
 			setEmoticons(response.data);
+			console.log(1);
 		},
 	});
 	// console.log(isLoading, data)
