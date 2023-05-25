@@ -79,7 +79,7 @@ export default function Header() {
 	};
 	useEffect(() => {
 		scrollY.on("change", () => {
-			if (scrollY.get() > 110) {
+			if (scrollY.get() > 110 && window.outerWidth <= 767) {
 				navAnimation.start("scroll").then();
 			} else {
 				navAnimation.start("top").then();
@@ -240,7 +240,6 @@ export default function Header() {
 						initial={"top"}
 						transition={{ duration: 0.2 }}
 					>
-						<span onClick={logState}>현재 스냅샷 보관</span>
 						<SNavLink to={`/${COOL_EMOTICON_BASE_PATH}`}>
 							홈 {(homeMatch || homeMatch2) && <SBar layoutId={"navBar"} />}
 						</SNavLink>
@@ -332,6 +331,7 @@ export default function Header() {
 										{
 											!user?.isAuth ? <span onClick={handleLogin}>로그인</span> : <span onClick={handleLogout}>로그아웃</span>
 										}
+										<span onClick={logState}>현재 스냅샷 보관</span>
 										<Link onClick={() => {
 											setIsMenu(false);
 											setIsBodyFix(false);

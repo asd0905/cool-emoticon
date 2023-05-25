@@ -82,6 +82,46 @@ const SLayout = styled.div`
 	}
 `;
 
+export const SBanner = styled.div`
+	background-color: #ffe56a;
+	height: 210px;
+	.bnr_inner {
+		position: relative;
+		max-width: 1024px;
+		min-width: 320px;
+		box-sizing: border-box;
+		margin: 0 auto;
+		.bnr_tit_new {
+			position: absolute;
+			left: 40px;
+			top: 58px;
+			vertical-align: middle;
+			height: 94px;
+		}
+		.bnr_bg_new {
+			position: absolute;
+			right: 40px;
+			top: 0;
+			z-index: 0;
+			vertical-align: middle;
+			height: 210px;
+		}
+	}
+	@media screen and (max-width: 767px) {
+		height: 110px;
+		.bnr_inner {
+			.bnr_tit_new {
+				height: 60px;
+				top: 25px;
+				left: 24px;
+			}
+			.bnr_bg_new {
+				display: none;
+			}
+		}
+	}
+`
+
 export default function New() {
 	const emoticons = useRecoilValue<IEmoticonSelector[]>(emoticonsSelector(1));
 	const setEmoticons = useSetRecoilState(emoticonsAtom);
@@ -98,14 +138,20 @@ export default function New() {
 	return (
 		<>
 			<SLayout>
-				<MainBanner type={"newMainBanner"}>
+				{/*<MainBanner type={"newMainBanner"}>
 					<video autoPlay={true} muted={true} loop={true} playsInline={true}>
 						<source
 							src='//update.coolmessenger.com/_ImageServer/jirancomms/img/서비스흐름.mp4'
 							type='video/mp4'
 						/>
 					</video>
-				</MainBanner>
+				</MainBanner>*/}
+				<SBanner>
+					<h3 className={'bnr_inner'}>
+						<img className={'bnr_tit_new'} src={`${process.env.PUBLIC_URL}/banners/bnr_tit_new.png`} alt="img"/>
+						<img className={'bnr_bg_new'} src={`${process.env.PUBLIC_URL}/banners/bnr_bg_new.png`} alt="img"/>
+					</h3>
+				</SBanner>
 				{isLoading ? (
 					<div>Loading...</div>
 				) : (

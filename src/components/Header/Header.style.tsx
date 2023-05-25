@@ -167,6 +167,9 @@ export const SNav = styled(motion.nav)`
 	justify-content: center;
 	align-items: center;
 	background-color: ${props => props.theme.white.lighter};
+    //@media screen and (min-width: 767px) {
+    //    margin-top: 0 !important;
+    //}
 `;
 
 export const SNavLink = styled(Link)`

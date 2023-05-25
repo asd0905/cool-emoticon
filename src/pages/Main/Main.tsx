@@ -1,14 +1,52 @@
 import { useQuery } from "react-query";
 import { getEmoticon } from "../../api";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { EEmoticon, EQueryKey, IEmoticonData } from "../../app.constant";
-import {useRecoilCallback, useRecoilValue, useSetRecoilState} from 'recoil';
+import {useRecoilValue, useSetRecoilState} from 'recoil';
 import { emoticonsAtom, isDraggableAtom } from "../../atoms/atom";
 import FMSlider from "../../components/FMSlider/FMSlider";
 import { SLayout, STitle3 } from "./Main.style";
 import MainBanner from "../../components/MainBanner/MainBanner";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import React from "react";
+import Slider from "react-slick";
+import styled from 'styled-components';
+
+const SBanner = styled.div`
+	margin-bottom: 20px;
+	.slick-dots {
+		position: static;
+		li {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			button {
+				text-indent: -9999px;
+				display: inline-block;
+				width: 8px;
+				height: 8px;
+				background-color: rgba(0, 0, 0, .2);
+				border-radius: 50%;
+			}
+			&.slick-active {
+				button {
+					background-color: #000;
+				}
+			}
+		}
+	}
+`
+
+const SSlickBox = styled.div<{color: string}>`
+	background-color: ${props => props.color};
+	img {
+		max-width: 944px;
+		width: 100%;
+		margin: 0 auto;
+		display: block;
+	}
+`
 
 export default function Main() {
 	const setEmoticons = useSetRecoilState<IEmoticonData>(emoticonsAtom);
@@ -20,11 +58,21 @@ export default function Main() {
 			console.log(1);
 		},
 	});
-	// console.log(isLoading, data)
+	// console.log(isLoading, data);
+	const settings = {
+		arrows: false,
+		dots: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 5000,
+        speed: 800,
+	}
 	return (
 		<>
 			<SLayout>
-				<MainBanner type={"mainBanner"}>
+				{/*<MainBanner type={"mainBanner"}>
 					<h1>쿨서비스 이모티콘</h1>
 					<video autoPlay={true} muted={true} loop={true} playsInline={true}>
 						<source
@@ -32,7 +80,17 @@ export default function Main() {
 							type='video/mp4'
 						/>
 					</video>
-				</MainBanner>
+				</MainBanner>*/}
+				<SBanner>
+					<Slider {...settings}>
+						<SSlickBox color={'rgb(199, 228, 218)'}>
+							<img src={`${process.env.PUBLIC_URL}/banners/kakao_main_0.gif`} alt="img"/>
+						</SSlickBox>
+						<SSlickBox color={'rgb(255, 214, 214)'}>
+							<img src={`${process.env.PUBLIC_URL}/banners/kakao_main_1.gif`} alt="img"/>
+						</SSlickBox>
+					</Slider>
+				</SBanner>
 				{isLoading ? (
 					<div>Loading...</div>
 				) : (
